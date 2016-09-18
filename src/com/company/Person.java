@@ -20,7 +20,11 @@ public class Person {
     }
 
     public boolean marry(Person person) {
-        if (person.man != this.man && (this.name.equals(person.spouse.name) && person.name.equals(this.spouse.name))) {
+        if (person.man != this.man) {
+            if (person.spouse != null && this.spouse != null) {
+                if (this.name.equals(person.spouse.name) && person.name.equals(this.spouse.name))
+                    return false;
+            }
             divorce(person);
             divorce(this);
             this.spouse = person;
