@@ -1,14 +1,20 @@
 package com.company;
 
+import java.util.*;
+
 public class Main {
+
     public static void main(String[] args) {
-        Person A = new Person(true, "Bob");
-        Person B = new Person(false, "Alena", A);
-        Person C = new Person(true, "Misha", null);
-        Person D = new Person(false, "Anna", C);
-        System.out.println(A.marry(B));
-        //System.out.println(A.spouse.name + " ---> " + B.spouse.name);
-        System.out.println(C.marry(C));
-        //System.out.println(C.spouse.name + " ---> " D.spouse.name);
+        CountMap<Integer> map1 = new CountMap<>();
+        map1.add(10);
+        map1.add(10);
+        map1.add(5);
+        map1.add(6);
+        map1.add(5);
+        map1.add(10);
+        System.out.println(map1.getCount(5));  // 2
+        System.out.println(map1.getCount(6));  // 1
+        System.out.println(map1.getCount(10)); // 3
+        System.out.println(map1.size()); // 3
     }
 }
