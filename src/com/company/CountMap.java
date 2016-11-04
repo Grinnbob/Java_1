@@ -16,19 +16,19 @@ public class CountMap<K> {
         }
         if (!count)
             map.put(o, 1);
-    };
+    }
 
     //Возвращает количество добавлений данного элемента
     int getCount(K o) {
         return map.get(o);
-    };
+    }
 
     //Удаляет элемент из контейнера и возвращает количество его добавлений(до удаления)
     int remove(K o) {
         int n = getCount(o);
         map.remove(o);
         return n;
-    };
+    }
 
     //количество разных элементов
     int size() {
@@ -37,7 +37,7 @@ public class CountMap<K> {
                 count++;
         }
         return count;
-    };
+    }
 
     //Добавить все элементы из source в текущий контейнер, при совпадении ключей, суммировать значения
     void addAll(CountMap source) {
@@ -55,16 +55,16 @@ public class CountMap<K> {
                 map.put((K)i, 1);
             }
         }
-    };
+    }
 
     //Вернуть java.util.Map. ключ - добавленный элемент, значение - количество его добавлений
     Map toMap() {
         return map;
-    };
+    }
 
     //Тот же самый контракт как и toMap(), только всю информацию записать в destination
     void toMap(Map destination) {
         destination = map;
-    };
+    }
 }
 

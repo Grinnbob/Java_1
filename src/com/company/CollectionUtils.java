@@ -1,46 +1,69 @@
 package com.company;
-/*
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import static java.util.Objects.compare;
+
 public class CollectionUtils {
+    private Object b;
     public static<T> void addAll(List<? extends T> source, List<? super T> destination) {
-
         destination.addAll(source);
-
     }
 
-    public static List newArrayList() {
-
+    public static<T> List newArrayList() {
+        List<T> list = new ArrayList<T>();
+        return list;
     }
 
-    public static int indexOf(List source, Object o) {
-
+    public static<T> int indexOf(List<? super T> source, T o) {
+        return source.indexOf(o);
     }
 
-    public static List limit(List source, int size) {
-
+    public static<T> List limit(List<? extends T> source, int size) {
+        List<T> MyList = newArrayList();
+        for(int i = source.size() - size; i < source.size(); i++ ) {
+            MyList.add(source.get(i));
+        }
+        return MyList;
     }
 
-    public static void add(List source, Object o) {
-
+    public static<T> void add(List source, T o) {
+        source.add(o);
     }
 
-    public static void removeAll(List removeFrom, List c2) {
-
+    public static<T> void removeAll(List<? super T> removeFrom, List c2) {
+        c2.removeAll(removeFrom);
     }
 
-    public static boolean containsAll(List c1, List c2) {
-
+    public static<T> boolean containsAll(List<? super T> c1, List<? super T> c2) {
+        return c1.containsAll(c2);
     }
 
-    public static boolean containsAny(List c1, List c2) {
-
+    public static<T> boolean containsAny(List<? super T> c1, List<? super T> c2) {
+        for(Object elem : c1) {
+            if(c2.contains(elem))
+                return true;
+        }
+        return false;
     }
 
-    public static List range(List list, Object min, Object max) {
-
+    public static<T extends Comparable> List range(List<? extends T> list, T min, T max) {
+        List<T> MyList = newArrayList();
+        for(T elem : list) {
+            if(elem.compareTo(min) >= 0 && elem.compareTo(max) <= 0)
+                MyList.add(elem);
+        }
+        return MyList;
     }
 
-    public static List range(List list, Object min, Object max, Comparator comparator) {
-
+    public static<T> List range(List<? extends T> list, T min, T max, Comparator<? super T> comparator) {
+        List<T> MyList = newArrayList();
+        for(T elem : list) {
+            if(comparator.compare(elem, min) >= 0 && comparator.compare(elem, max) <= 0)
+                MyList.add(elem);
+        }
+        return MyList;
     }
 }
-*/
+
